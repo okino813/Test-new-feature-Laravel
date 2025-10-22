@@ -8,7 +8,7 @@ use Tests\TestCase;
 class ArticleControllerTest extends TestCase
 {
 
-    protected string $title = "Salut à tous le monde ou pas facho";
+    protected string $title = "Ceci est un titre d'article";
 
     /**
      * A basic feature test example.
