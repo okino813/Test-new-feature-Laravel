@@ -6,6 +6,7 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +15,12 @@ Route::get('/', function () {
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+// Pour la partie Article
+Route::get('article/create', [ArticleController::class, 'create'])->name('article.create');
+Route::post('article/store', [ArticleController::class, 'store'])->name('article.store');
+Route::delete('article/delete/{id}', [ArticleController::class, 'destroy'])->name('article.delete');
+Route::get('article', [ArticleController::class, 'index'])->name('article.index');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
